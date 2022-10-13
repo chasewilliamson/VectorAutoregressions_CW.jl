@@ -706,7 +706,7 @@ function irf_ext_instrument(V::VAR,Z::Vector{Float64},H::Int64,intercept::Bool)
     # Version improved by G. Ragusa
     y,B,Σ,U,p = V.Y',V.β,V.Σ,V.ϵ,V.p
     (T,K) = size(y)
-    T_z = size(Z)
+    T_z = size(Z)[1]
     ZZ = Z[p+1:end,:]
     ΣηZ = U[:,T-T_z+p+1:end]*ZZ
     Ση₁Z = ΣηZ[1:1,:]
