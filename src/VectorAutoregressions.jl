@@ -685,13 +685,13 @@ function irf_ext_instrument(V::VAR,Z::AbstractArray,H::Int64,intercept::Bool)
     # Version improved by G. Ragusa
     y,B,Σ,U,p = V.Y',V.β,V.Σ,V.ϵ,V.p
     (T,K) = size(y)
-    (T_z, K_z) = size(Z)
+    T_z = size(Z)[1]
     ZZ = Z[p+1:end,:]
     ΣηZ = U[:,T-T_z+p+1:end]*ZZ
     Ση₁Z = ΣηZ[1:1,:]
     H1 = ΣηZ*Ση₁Z'./(Ση₁Z*Ση₁Z')
     A0inv = [H1 zeros(K,K-1)]
-    A = [B[:,2:end];[Matrix(1.0I,K*(p-1),K*(p-1)) zeros(K*(p-1),K)]]
+    A = [B[:,1:end];[Matrix(1.0I,K*(p-1),K*(p-1)) zeros(K*(p-1),K)]]
     J = [Matrix(1.0I,K,K) zeros(K,K*(p-1))]
     IRF = GrowableArray(A0inv[:,1])
     #HD = GrowableArray(zeros(K,K))
