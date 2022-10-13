@@ -2,7 +2,7 @@
 # Credits:
 # Kilian and Kim 2011, Cremfi codes, Geertler and Karadi 2015
 
-module VectorAutoregressions_CW
+module VectorAutoregressions
 using Parameters, GrowableArrays, LinearAlgebra, Statistics
 using Random
 using Statistics: mean, std, quantile
